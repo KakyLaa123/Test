@@ -1,17 +1,15 @@
-let Numbers = [];
-
-let NumbersFactorial = [];
+let Numbers;
 
 class AClass {
     constructor(n){
         if (this.constructor == AClass){
             throw new Error('Abstract class can not be instantiated');
-        }
+        }        
         this.n = n;
         return n;
     }
 
-    fill(max = 10, min = 1){
+    fill(max = 15, min = 1){
         Numbers = [];
         for(let i = 0; i < this.n; i++){
             let numbersInArray = Math.round(Math.random() * (max - min) + min);
@@ -22,7 +20,7 @@ class AClass {
     }
 
     factorial(){
-        NumbersFactorial = [];
+        let NumbersFactorial = [];
         for(let i = 0; i < Numbers.length; i++){
             let numbersInFactorial = Numbers[i];
             for(let j = Numbers[i] - 1; j > 0; j--){
@@ -32,6 +30,10 @@ class AClass {
         }
         console.log(NumbersFactorial);
         return NumbersFactorial;
+    }
+
+    sort() {
+        throw new Error("Method 'sort()' must be implemented.");
     }
 }
 
