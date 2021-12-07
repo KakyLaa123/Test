@@ -1,21 +1,19 @@
 let Numbers = [];
 
-let n = 5;
-
 let NumbersFactorial = [];
 
 class AClass {
-
-    constructor(){
+    constructor(n){
         if (this.constructor == AClass){
             throw new Error('Abstract class can not be instantiated');
         }
+        this.n = n;
+        return n;
     }
 
-    
-
     fill(max = 10, min = 1){
-        for(let i = 0; i < n; i++){
+        Numbers = [];
+        for(let i = 0; i < this.n; i++){
             let numbersInArray = Math.round(Math.random() * (max - min) + min);
             Numbers.push(numbersInArray);
         }
@@ -24,19 +22,17 @@ class AClass {
     }
 
     factorial(){
-        for(let i = 0; i < n; i++){
+        NumbersFactorial = [];
+        for(let i = 0; i < Numbers.length; i++){
             let numbersInFactorial = Numbers[i];
             for(let j = Numbers[i] - 1; j > 0; j--){
                 numbersInFactorial = numbersInFactorial * j;
-                console.log(j);
-                console.log(numbersInFactorial);
             }
             NumbersFactorial.push(numbersInFactorial);
         }
         console.log(NumbersFactorial);
         return NumbersFactorial;
     }
-
 }
 
 class Class1 extends AClass {
@@ -56,9 +52,28 @@ class Class1 extends AClass {
 }
 
 class Class2 extends AClass {
-
+    sort(){
+        for(let abc = 0; abc < 2; abc++){
+            for (let i = 0; i < Numbers.length - 1; i++){
+                let maxValue = Numbers[i];
+                    for (let j = i + 1; j < Numbers.length; j++) {
+                    if (Numbers[j] < maxValue) {
+                        let minValue = Numbers[j];
+                        let swap = Numbers[i];
+                        Numbers[i] = minValue;
+                        Numbers[j] = swap;
+                    }
+                }
+            }
+            console.log(Numbers);
+            return Numbers;
+        }
+    }
 }
 
-new Class1().fill().sort();
+new Class1(5).fill();
 new Class1().sort();
 new Class1().factorial();
+new Class2(5).fill();
+new Class2().sort();
+new Class2().factorial();
